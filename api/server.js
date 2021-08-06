@@ -8,7 +8,7 @@ const actionsRouter = require('./actions/actions-router')
 
 server.use(express.json())
 server.use('/api/projects', projectsRouter)
-// server.use('/api/actions', actionsRouter)
+server.use('/api/actions', actionsRouter)
 
 
 
@@ -18,10 +18,7 @@ server.use('/api/projects', projectsRouter)
 // Build your projects router in /api/projects/projects-router.js
 // Do NOT `server.listen()` inside this file!
 
-// server.get('/api/projects', (req,res) => {
-//     console.log('working')
-//     res.json({message: 'im working'})
-// })
+
 
 
 module.exports = server

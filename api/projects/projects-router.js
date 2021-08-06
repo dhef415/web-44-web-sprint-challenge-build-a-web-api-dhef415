@@ -11,7 +11,7 @@ router.get('/', (req,res) => {
             res.status(200).json(project)
         })
         .catch(
-
+            res.status(404)
         )
 })
 
@@ -45,13 +45,13 @@ router.put('/:id', (req,res) => {
     Projects.update(id, req.body)
         .then(changes => {
             if (!changes) {
-                res.status(400)
+                res.status(400).json({messgae:'i dont think so'})
             } else {
-                res.json(changes) 
+            res.json(changes) 
             }
         })
         .catch(()=>{
-            res.status(400)
+            res.status(400).json({message:'no no no'})
         })
 })
 
@@ -70,11 +70,10 @@ router.get('/:id/actions', (req,res) => {
     const { id } = req.params
     Projects.get(id)
         .then(actions => {
-            if (!actions) {
-                res.json([])
-            } else {
-                res.json(actions)
-            }
+            res.json(actions)
+        })
+        .catch(()=>{
+            res.status(404)
         })
 })
 
